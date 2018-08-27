@@ -1,9 +1,7 @@
 import { CHANGE_SEARCH_FIELD } from './constants.js'
-const initialState  = {
-  searchField: ''
-}
+import { combineReducers } from 'redux';
 
-export const searchRobots = (state = initialState, action={}) => {
+const searchRobots = (state = '', action={}) => {
   switch(action.type){
     case CHANGE_SEARCH_FIELD:
     return Object.assign({}, state, { searchField: action.payload });
@@ -11,3 +9,9 @@ export const searchRobots = (state = initialState, action={}) => {
     return state;
   }
 }
+
+const appState = combineReducers({
+  searchField: searchRobots
+});
+
+export default appState;
